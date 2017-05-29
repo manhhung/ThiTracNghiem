@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="dangNhapForm" type="form.DangNhapForm"/>
+		<form-bean name="danhSachTaiKhoanForm" type="form.DanhSachTaiKhoanForm" />
+		<form-bean name="nguoiDungForm" type="form.NguoiDungForm" />
+		<form-bean name="thongTinNguoiDungForm" type = "form.ThongTinNguoiDungForm"></form-bean>
+		<form-bean name="thongKeDiemCaoForm" type="form.ThongKeDiemCaoForm" />
+		<form-bean name="danhSachMonThiForm" type="form.DanhSachMonThiForm" />
+		<form-bean name="monThiForm" type="form.MonThiForm" />
+		<form-bean name="danhSachCauHoiForm" type="form.DanhSachCauHoiForm" />
+		<form-bean name="danhSachDeThiForm" type="form.DanhSachDeThiForm" />
+		<form-bean name="nguoiDungForm" type="form.NguoiDungForm" />
+		<form-bean name="danhSachChiTietDeThiForm" type="form.DanhSachChiTietDeThiForm" />
+		<form-bean name="cauHoiForm" type="form.CauHoiForm" />
+		<form-bean name="deThiForm" type="form.DeThiForm" />
+		<form-bean name="giaoDienBatDauForm2" type="form.GiaoDienBatDauForm2"/>
+		<form-bean name="giaoDienBatDauForm" type="form.GiaoDienBatDauForm"/>
+		<form-bean name="thiForm" type="form.ThiForm"/>
+		<form-bean name="luuKetQuaForm" type="form.LuuKetQuaForm"/>
+	</form-beans>
+	<action-mappings>
+		<action input="/dangNhap.jsp" name="dangNhapForm"
+			path="/dang-nhap" scope="request" type="action.DangNhapAction">
+			<forward name="admin" path="/TrangChuQuanTriVien.jsp"/>
+			<forward name="quanLy" path="/giaoDienQuanLy.jsp" />
+			<forward name="nguoiThi" path="/giaoDienNguoiDungBD.jsp"/>
+			<forward name="thiTiep" path="/thi.do?page=1"/>
+			<forward name="thatBai" path="/dangNhap.jsp"/>
+		</action>
+		
+		<action input="/dangNhap.jsp" name="danhSachTaiKhoanForm"
+			path="/danh-sach" scope="request" type="action.DanhSachTaiKhoanAction">
+			<forward name="dsNguoiDung" path="/viewTaiKhoan.jsp" />
+		</action>
+		<action input="/themTaiKhoan.jsp" name="nguoiDungForm"
+			path="/themTaiKhoan" scope="request" type="action.ThemTaiKhoanAction" >
+			<forward name="themTaiKhoan" path="/themTaiKhoan.jsp" />
+			<forward name="themTaiKhoanerror" path="/themTaiKhoan.jsp" />
+			<forward name="themTaiKhoanxong" path="/danh-sach.do" redirect="true"/>
+				<forward name="danhsach" path="/danh-sach.do" redirect="true" />
+		</action>
+		<action input="/suaTaiKhoan.jsp" name="nguoiDungForm"
+			path="/suaTaiKhoan" scope="request" type="action.SuaTaiKhoanAction" >
+			<forward name="suaTaiKhoan" path="/suaTaiKhoan.jsp" />
+			<forward name="suaTaiKhoanerror" path="/suaTaiKhoan.jsp" />
+			<forward name="suaTaiKhoanxong" path="/danh-sach.do" redirect="true"/>
+				<forward name="danhsach" path="/danh-sach.do" redirect="true" />
+		</action>
+		<action input="/themChiTietTaiKhoan.jsp" name="thongTinNguoiDungForm"
+			path="/suaThongTinTaiKhoan" scope="request" type="action.ThemChiTietTaiKhoanAction" >
+			<forward name="suaThongTinTaiKhoan" path="/themChiTietTaiKhoan.jsp" />
+			<forward name="suaThongTinTaiKhoanerror" path="/themChiTietTaiKhoan.jsp" />
+			<forward name="suaThongTinTaiKhoanxong" path="/danh-sach.do" />
+				<forward name="danhsach" path="/danh-sach.do"  />
+		</action>
+		<action input="/viewTaiKhoan.jsp" name="nguoiDungForm"
+                  path="/xoaTaiKhoan" scope="request" type="action.XoaTaiKhoanAction">
+                  <forward name="xoaTaiKhoan" path="/danh-sach.do" />   
+         </action>
+         <action input="/TrangChuQuanTriVien.jsp" name="danhSachMonThiForm"
+			path="/mon-thi" scope="request" type="action.DanhSachMonThiAction">
+			<forward name="dsMonThi" path="/quanLyMon.jsp" />
+			<forward name="dgMon" path="/TrangChuQuanTriVien.jsp" />
+		</action>
+		<action input="/themMon.jsp" name="monThiForm"
+			path="/themMon" scope="request" type="action.ThemMonThiAction">
+			<forward name="themMonThi" path="/themMon.jsp" />
+			<forward name="themMonThierror" path="/themMon.jsp" />	
+			<forward name="themMonThixong" path="/mon-thi.do" redirect="true"/>
+			
+		</action>
+		<action input="/suaMon.jsp" name="monThiForm"
+			path="/suaMon" scope="request" type="action.SuaMonThiAction">
+			<forward name="suaMonThi" path="/suaMon.jsp" />
+			<forward name="suaMonThixong" path="/mon-thi.do" redirect="true" />
+			<forward name="danhsach" path="/mon-thi.do" redirect="true"/>
+		</action>
+		<action input="/quanLydanhMuc.jsp" name="monThiForm"
+			path="/xoaMon" scope="request" type="action.XoaMonThiAction">
+			<forward name="xoaMonThi" path="/mon-thi.do" />	
+		</action>
+		<action input="/TrangChuQuanTriVien.jsp" name="thongKeDiemCaoForm"
+			path="/thong-ke" scope="request" type="action.ThongKeDiemCaoAction">
+			<forward name="tkDiem" path="/thongKeDiemCao.jsp" />
+			<forward name="giaodien" path="/TrangChuQuanTriVien.jsp" />
+		</action>
+		
+	
+		
+		<action path="/cau-hoi" name="danhSachCauHoiForm"
+			 scope="request" type="action.DanhSachCauHoiAction">
+			<forward name="dsCauHoi" path="/danhSachCauHoi2.jsp" />
+		</action>
+		
+		<action input="/dangNhap.jsp" name="danhSachDeThiForm"
+			path="/danh-sach2" scope="request" type="action.DanhSachDeThiAction">
+			<forward name="dsDeThi" path="/danhSachDeThi.jsp" />
+		</action>
+		
+		<action input="/dangNhap.jsp" name="danhSachChiTietDeThiForm"
+			path="/chiTietDeThi" scope="request" type="action.DanhSachChiTietDeThiAction">
+			<forward name="dsChiTietDeThi" path="/chiTietDeThi.jsp" />
+		</action>
+		
+		
+			
+		<action input="/themCauHoi.jsp" name="cauHoiForm"
+			path="/themCauHoi" scope="request" type="action.ThemCauHoiAction" validate="true">
+			<forward name="themCauHoi" path="/themCauHoi.jsp" />
+			<forward name="themCauHoierror" path="/themCauHoi.jsp" />
+			<forward name="themCauHoixong" path="/cau-hoi.do" redirect="true"/>
+		</action>
+		
+		<action input="/themDeThi.jsp" name="deThiForm"
+			path="/themDeThi" scope="request" type="action.ThemDeThiAction" validate="true">
+			<forward name="themDeThi" path="/themDeThi.jsp" />
+			<forward name="themDeThixong" path="/danh-sach2.do" redirect="true"/>
+			<forward name="themDeThiSai" path="/themDeThi.jsp"></forward>
+		</action>
+		
+		<action input="/capNhatCauHoi.jsp" name="cauHoiForm"
+			path="/capNhatCauHoi" scope="request" type="action.CapNhatCauHoiAction">
+			<forward name="capNhatCauHoi" path="/capNhatCauHoi.jsp" />
+			<forward name="capNhatCauHoixong" path="/cau-hoi.do" redirect="true"/>
+		</action>
+		
+		<action input="/capNhatDeThi.jsp" name="deThiForm"
+			path="/capNhatDeThi" scope="request" type="action.CapNhatDeThiAction">
+			<forward name="capNhatDeThi" path="/capNhatDeThi.jsp" />
+			<forward name="capNhatDeThixong" path="/danh-sach2.do" redirect="true"/>
+		</action>
+		
+		
+		
+		<action input="/dangNhap.jsp" name="cauHoiForm"
+			path="/xoaCauHoi" scope="request" type="action.XoaCauHoiAction">
+			<forward name="xoaCauHoi" path="/xoaCauHoi.jsp" />
+			<forward name="xoaCauHoixong" path="/cau-hoi.do" redirect="true"/>
+		</action>
+		
+		<action input="/dangNhap.jsp" name="deThiForm"
+			path="/xoaDeThi" scope="request" type="action.XoaDeThiAction">
+			<forward name="xoaDeThi" path="/xoaDeThi.jsp" />
+			<forward name="xoaDeThixong" path="/danh-sach2.do" redirect="true"/>
+		</action>
+		<action input="/giaoDienNguoiDungBD.jsp" name="giaoDienBatDauForm"
+			path="/lamBaiThi" scope="request" type="action.GiaoDienBatDauAction">
+			<forward name="thanhCong" path="/thi.do?page=1" redirect="true"/>
+			<forward name="thatBai" path="/giaoDienNguoiDungBD2.jsp" />
+		</action>
+	
+		<action input="/giaoDienNguoiDungBD.jsp" name="thiForm"			
+		path="/thi" scope="request" type="action.ThiAction">	
+		<forward name="dsCauHoi" path="/giaoDienNguoiDung.jsp" />
+		<forward name="xemKetQua"  path="/giaoDienKetQuaThi.jsp" />
+		</action>	
+		<action input="/giaoDienNguoiDung.jsp" name="luuKetQuaForm"	
+		path="/xemKetQua" scope="request" type="action.XemKetQuaAction">
+		<forward name="xemKetQua"  path="/giaoDienKetQuaThi.jsp" />
+		</action>
+		
+		<action input="/themChiTietTaiKhoan2.jsp" name="thongTinNguoiDungForm"
+			path="/test" scope="request" type="action.ThemChiTietTaiKhoanAction2" >
+			<forward name="suaThongTinTaiKhoan2" path="/themChiTietTaiKhoan2.jsp" />
+			<forward name="suaThongTinTaiKhoanerror" path="/themChiTietTaiKhoan2.jsp" />
+			<forward name="suaThongTinTaiKhoanxong2" path="/thanhCong.jsp" />
+					
+		</action>
+		<action input="/thongKeDiemCao.jsp" name="thongKeDiemCaoForm"
+			path="/xoaDiem" scope="request" type="action.ThongKeDiemCaoAction">
+			<forward name="tkDiem" path="/thong-ke.do" />	
+		</action>
+		
+	</action-mappings>
+	<message-resources parameter="action.ApplicationResources" />
+	
+</struts-config>
